@@ -8,23 +8,23 @@
     <style>
         .carousel-container {
             display: grid;
-            grid-template-columns: 1fr; /* Default to 1 column */
+            grid-template-columns: 1fr; 
             align-items: center;
             justify-items: center;
             overflow: hidden;
         }
         @media (min-width: 640px) {
             .carousel-container {
-                grid-template-columns: 2fr 1fr; /* 2 columns on larger screens */
+                grid-template-columns: 2fr 1fr; 
             }
         }
         .carousel {
             position: relative;
-            width: 90%; /* Use percentage for responsiveness */
+            width: 90%; 
             height: 70vh; 
             transform-style: preserve-3d;
             animation: rotate 30s linear infinite;
-            margin: 0 auto; /* Center the carousel */
+            margin: 0 auto; 
         }
         .carousel-item {
             --i: 1;
@@ -97,16 +97,16 @@
             border-radius: 10px;
             margin-bottom: 3rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s ease;
-            position: relative; /* Ensure z-index is applied */
-            z-index: 1; /* Default stacking order */
+            position: relative; 
+            z-index: 1; 
         }
         .modal-image:hover {
-            transform: scale(1.2); /* Enlarge the image more on hover */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Add a shadow effect for more emphasis */
-            z-index: 10; /* Bring the hovered image forward */
-            position: absolute; /* Ensure it stays in place */
-            left: 25%; /* Center the enlarged image horizontally */
-            transform: translate(-50%, -50%) scale(1.5); /* Center and enlarge */
+            transform: scale(1.2); 
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            z-index: 10; 
+            position: absolute; 
+            left: 25%; 
+            transform: translate(-50%, -50%) scale(1.5);
         }
         .flip-container {
             perspective: 1000px; 
@@ -123,7 +123,7 @@
             cursor: pointer;
         }
         .flip-card.flip {
-            transform: rotateY(180deg); /* Flip the card */
+            transform: rotateY(180deg); 
         }
         .flip-card-front, .flip-card-back {
             position: absolute;
@@ -136,8 +136,8 @@
             border-radius: 10px;
         }
         .flip-card-back {
-            background-color: #f9f9f9; /* Background for the text side */
-            transform: rotateY(180deg); /* Position the back side */
+            background-color: #f9f9f9; 
+            transform: rotateY(180deg); 
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -440,7 +440,7 @@
             <div class="modal-content bg-white rounded-lg shadow-lg p-6">
                 <span class="close text-gray-600 hover:text-gray-800 cursor-pointer">&times;</span>
                 <h2 class="text-2xl font-bold mb-4">Dearest, Bubba</h2>
-                <p class="text-lg text-gray-700 mb-4 text-justify" >It all started with a 5 peso coin and you messaging me, asking for images. We just clicked. I'm not sure why or how, but we did. We developed our friendship into something more. That something more is what we are now, in love. I am not sure about you, bub, but I am in love with you. I am frightened of what's coming, but I know we'll get through it together. Thank you for being understanding, patient, and making me feel loved. I apologize if I am stubborn and annoying at times, but that is who I am, and you have no choice but to deal with it hehe. Take care of yourself. We will see each other soon. I love you. bubba. Happy anniversary! TO MANY MORE SARYYY.</p>
+                <p class="text-lg text-gray-700 mb-4 text-justify" >It all started with a 5 peso coin and you messaging me, asking for images. We just clicked. I'm not sure why or how, but we did. We developed our friendship into something more. That something more is what we are now, in love. I am not sure about you, bub, but I am in love with you. I am frightened of what's coming, but I know we'll get through it together. Thank you for being understanding, patient, and making me feel loved. I apologize if I am stubborn and annoying at times, but that is who I am, and you have no choice but to deal with it hehe. Take care of yourself. I love you. bubba. Happy anniversary! TO MANY MORE SARYYY.</p>
                 <p class="text-lg text-gray-700 mb-2">Yours truly,</p>
                 <p class="text-lg font-semibold text-gray-800">Marie</p>
             </div>
@@ -450,7 +450,7 @@
   
 
     <div>
-        <!-- Additional scripts -->
+  {{-- scripts for functionality --}}
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var playButton = document.getElementById('play-button');
@@ -463,52 +463,51 @@
                 var flipCards = document.querySelectorAll('.flip-card');
                 var alertDiv = document.getElementById('alert');
 
-                // Play button event listener
+                // Play button 
                 playButton.addEventListener('click', function () {
                     backgroundMusic.play();
                 });
 
-                // Open popup button event listener
+                // Open popup button 
                 openPopupButton.addEventListener('click', function () {
                     popup.style.display = 'block';
                 });
 
-                // Open read modal button event listener
+                // Open read modal button 
                 openReadModalButton.addEventListener('click', function () {
                     readModal.style.display = 'block';
                 });
 
-                // Close buttons event listener
+                // Close buttons 
                 closeButtons.forEach(function (button) {
                     button.addEventListener('click', function () {
                         button.parentElement.parentElement.style.display = 'none';
                     });
                 });
 
-                // Flip card event listener
+                // Flip card 
                 flipCards.forEach(function (card) {
                 card.addEventListener('click', function () {
                     card.classList.toggle('flip');
                     var isFlipped = card.getAttribute('data-flipped') === 'true';
                     card.setAttribute('data-flipped', !isFlipped);
 
-                    // Check if all cards are flipped
+                    // checks if cards are flipped
                     var allFlipped = Array.from(flipCards).every(function (card) {
                         return card.getAttribute('data-flipped') === 'true';
                     });
 
                     if (allFlipped) {
-                        // Show the alert with fade-in effect
+                        // alert transition
                         alertDiv.classList.remove('hidden', 'opacity-0');
                         alertDiv.classList.add('opacity-100');
                         
-                        // Hide after 2 seconds
                         setTimeout(function() {
                             alertDiv.classList.remove('opacity-100');
                             alertDiv.classList.add('opacity-0');
                             setTimeout(() => {
-                                alertDiv.classList.add('hidden'); // Add hidden class after fade-out
-                            }, 300); // Match this with the transition duration
+                                alertDiv.classList.add('hidden');
+                            }, 300); 
                         }, 2000);
                     }
                 });
